@@ -1,0 +1,531 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden !important;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    line-height: 1.2;
+    font-family: var(--font-primary); 
+}
+
+:root {
+    --color-primary: #c69963;
+    --color-primary-dark: #b28451;
+    --color-secondary: rgb(16, 29, 44);
+    --color-grey-light-1: #f9f7f6;
+    --color-grey-light-2: #aaa;
+    --color-grey-dark-1: #54483a;
+    --color-grey-dark-2: #6d5d4b;
+
+
+    --font-primary: "Nunito", sans-serif;
+    --font-display: "Josefin Sans", sans-serif;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+} */
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: 7rem minmax(5rem, 1fr) repeat(6, minmax(min-content, 20rem)) minmax(5rem, 1fr);
+    grid-template-areas: "navbar header header header header header realtors realtors realtors"
+                         "navbar . features features features features features features ."
+                         "navbar story-img story-img story-img story-img story-content story-content story-content story-content"
+                         "navbar . homes homes homes homes homes homes ."
+                         "navbar gallery gallery gallery gallery gallery gallery gallery gallery"
+                         "navbar footer footer footer footer footer footer footer footer";
+}
+
+/* navbar */
+.navbar {
+    grid-area: navbar;
+    background-color: var(--color-primary);
+}
+
+.nav-icon {
+    width: 3rem;
+    height: 0.15rem;
+    background-color: #fff;
+    position: relative;
+    margin: 3rem auto;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+    content: " ";
+    position: absolute;
+    width: 3rem;
+    height: 0.15rem;
+    background-color: #fff;
+    top: -1rem;
+}
+
+.nav-icon::after {
+    top: 1rem;
+}
+
+/* header */
+.header {
+    grid-area: header;
+    background: linear-gradient(rgba(16, 29, 44,0.83), rgba(16, 29, 44,0.83)), url(../assests/img/hero.jpeg) no-repeat center center/cover;
+    display: grid;
+    grid-template-rows: minmax(5rem, 1fr) 3rem minmax(7rem, min-content) minmax(5rem, 1fr) 5rem;
+    justify-items: start;
+    align-content: space-between;
+    align-items: start;
+    padding: 2rem 3rem;
+}
+
+.header .company-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 3rem;
+}
+
+.header .header-logo {
+    justify-self: center;
+}
+
+.header .header-logo img {
+    height: 50px;
+}
+
+.header h3 {
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.header h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: var(--color-grey-light-1);
+}
+
+.header button {
+    background-color: var(--color-primary-dark);
+    font-weight: 100;
+    font-family: var(--font-display);
+    color: var(--color-grey-light-1);
+    padding: 1.2rem 1.5rem;
+    border: none;
+}
+
+.header p {
+    color: var(--color-grey-light-1);
+    font-size: 1.6rem;
+    justify-self: center;
+    position: relative;
+}
+
+.header p::before,
+.header p::after {
+    content: "";
+    position: absolute;
+    left: -36rem;
+    top: 1rem;
+    width: 35rem;
+    height: 0.15rem;
+    background-color: var(--color-grey-light-1);
+}
+
+.header p::after {
+    left: 7.5rem;
+}
+
+.header .company-logos img {
+    height: 7rem;
+    margin-bottom: 3rem;
+}
+
+/* realtors */
+
+.realtors {
+    grid-area: realtors;
+    background-color: var(--color-secondary);
+    color: white;
+    display: grid;
+    align-content: center;
+    grid-row-gap: 3rem;
+}
+
+.realtors h1 {
+    justify-self: center;
+}
+
+.realtorList {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 2rem;
+    grid-row-gap: 4vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.realtorList img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+}
+
+.services {
+   grid-area: features;
+/* background: lightseagreen; */
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   grid-column-gap: 1rem;
+   grid-row-gap: 6rem;
+   margin: 10rem 0;
+}
+
+.service {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1rem;
+    grid-column-gap: 2rem;
+    align-content: start;
+}
+
+.serviceIcon {
+    width: 5rem;
+    height: 5rem;
+    grid-row: 1 / span 2;
+    /* stroke: var(--color-primary); */
+    fill: var(--color-primary);
+    transform: translateY(-1rem);
+}
+
+.serviceHeading {
+    font-size: 2rem;
+    font-family: var(--font-display);
+}
+
+.serviceContent {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    /* padding-right: 1rem; */
+}
+
+/* story-img */
+
+.story-img {
+    grid-area: story-img;
+    background: linear-gradient(rgba(198, 153, 99, 0.5), rgba(198, 153, 99, 0.5)), url(../assests/img/back.jpg) no-repeat center center/cover;
+    /* background-size: 100% 100%, cover; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    position: relative;
+    padding: 3rem;
+}
+
+.goalsCenter {
+    width: 80%;
+    height: 80%;
+}
+
+.goalsOut {
+    width: 55%;
+    height: 45%;
+    position: absolute;
+    top: 30.5%;
+    left: 55%;
+    /* box-shadow: 0.5rem 0.5rem 0.5rem black; */
+}
+
+/* .story-content */
+
+.story-content {
+    grid-area: story-content;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 6rem 12rem;
+        background: var(--color-grey-light-1);
+}
+
+.story-content p {
+    font-size: 1.6rem;
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+.story-content h1 {
+    font-size: 3.2rem;
+    font-family: var(--font-primary);
+    color: var(--color-grey-dark-1);
+    margin-bottom: 2rem;
+    font-style: italic;
+    /* font-weight: lighter; */
+}
+
+.story-content .content {
+    font-size: 1.6rem;
+    font-family: var(--font-primary);
+    color: var(--color-grey-dark-2);
+    margin-bottom: 3rem;
+    font-weight: lighter;
+    line-height: 2.3rem;
+    font-style: italic;
+}
+
+.story-content h3 {
+    font-size: 1.8rem;
+    font-family: var(--font-display);
+    color: white;
+    font-weight: lighter;
+    /* line-height: 2.3rem; */
+    background: var(--color-primary);
+    justify-self: start;
+    padding: 1.8rem 3rem;
+    cursor: pointer;
+    transition: background 300ms ease-in-out;
+}
+
+/* .homes */
+
+.homes {
+    grid-area: homes;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 10rem;
+    margin: 14rem 0;
+}
+
+.home {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background: var(--color-grey-light-1);
+    justify-items: center;
+    align-items: center;
+}
+
+.homeImg {
+    grid-column: 1 / span 2;
+    background: lightcoral;
+    position: relative;
+    margin-bottom: 3.5rem;
+}
+
+.imgCommon {
+    width: 100%;
+}
+
+.homeDetailBtn {
+    background: black;
+    color: white;
+    font-size: 1.8rem;
+    font-family: var(--font-display);
+    width: 80%;
+    padding: 1.5rem 0;
+    position: absolute;
+    bottom: -2rem;
+    left: 10%;
+}
+
+.heartIcon {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 3%;
+    right: 4%;
+    fill: white;
+    transition: fill 300ms ease-in-out;
+    cursor: pointer;
+}
+
+.homeInfo {
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    font-family: var(--font-display);
+    color: var(--color-grey-dark-2);
+}
+
+.contactRealtorBtn {
+    grid-column: 1 / span 2;
+    background: var(--color-primary);
+    justify-self: stretch;
+    align-self: stretch;
+    padding: 1.7rem;
+    font-size: 2rem;
+    font-family: var(--font-display);
+    color: white;
+    margin-top: 2rem;
+}
+
+/* gallery */
+
+.gallery {
+    grid-area: gallery;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 10vh);
+    grid-gap: 1rem;
+}
+
+.gal-1 {
+    background: url(../assests/img/gal-1.jpeg) no-repeat center center/cover;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.gal-2 {
+    background: url(../assests/img/gal-2.jpeg) no-repeat center center/cover;
+    grid-column: 3 /span 3;
+    grid-row: 1/ span 3;
+}
+
+.gal-3 {
+    background: url(../assests/img/gal-3.jpeg) no-repeat center center/cover;
+    grid-column: 6 /span 1;
+    grid-row: 1/ span 2;
+}
+
+.gal-4 {
+    background: url(../assests/img/gal-4.jpeg) no-repeat center center/cover;
+    grid-column: 7 /span 2;
+    grid-row: 1/ span 2;
+}
+
+.gal-5 {
+    background: url(../assests/img/gal-5.jpeg) no-repeat center center/cover;
+    grid-column: 1 /span 2;
+    grid-row: 3 / span 3;
+}
+
+.gal-6 {
+    background: url(../assests/img/gal-6.jpeg) no-repeat center center/cover;
+    grid-column: 3 /span 2;
+    grid-row: 4 / span 2;
+}
+
+.gal-7 {
+    background: url(../assests/img/gal-7.jpeg) no-repeat center center/cover;
+    grid-column: 5 /span 1;
+    grid-row: 4 / span 1;
+}
+
+.gal-8 {
+    background: url(../assests/img/gal-8.jpeg) no-repeat center center/cover;
+    grid-column: 6 /span 2;
+    grid-row: 3 / span 2;
+}
+
+.gal-9 {
+    background: url(../assests/img/gal-9.jpeg) no-repeat center center/cover;
+    grid-column: 8 /span 1;
+    grid-row: 3 / span 3;
+}
+
+.gal-10 {
+    background: url(../assests/img/gal-10.jpeg) no-repeat center center/cover;
+    grid-column: 1 /span 1;
+    grid-row: 6/ span 1;
+}
+
+.gal-11 {
+    background: url(../assests/img/gal-11.jpeg) no-repeat center center/cover;
+    grid-column: 2 /span 2;
+    grid-row: 6/ span 1;
+}
+
+.gal-12 {
+    background: url(../assests/img/gal-12.jpeg) no-repeat center center/cover;
+    grid-column: 4 /span 1;
+    grid-row: 6 / span 1;
+}
+
+.gal-13 {
+    background: url(../assests/img/gal-13.jpeg) no-repeat center center/cover;
+    grid-column: 5 /span 3;
+    grid-row: 5 / span 2;
+}
+
+.gal-14 {
+    background: url(../assests/img/gal-14.jpeg) no-repeat center center/cover;
+    grid-column: 8 /span 1;
+    grid-row: 6 / span 1;
+}
+.footer {
+    grid-area: footer;
+    background-color: var(--color-secondary);
+    padding: 3rem;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    color: white;
+    justify-items: center;
+    grid-gap: 3rem;
+    align-items: center;
+}
+
+.listItem {
+    font-size: 1.6rem;
+    font-family: var(--font-primary);
+    font-weight: lighter;
+    padding: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2rem;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+
+.footer>p {
+    font-size: 1.4rem;
+    color: white;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 4rem;
+}
